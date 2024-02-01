@@ -9,7 +9,7 @@ if (!isset($product)) {
         echo $row["title"] . "     ";
         echo $row["content"] . "     ";
         echo $row["ttc"]. "     <br>";
+        echo '<input type="button" value="Viens voir" href ="index.php?action=showproduct&id="<?= $row["id"] ?>'. "<br>";
     }
-echo "showAll";
 }
 
