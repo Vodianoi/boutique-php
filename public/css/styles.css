@@ -10,6 +10,7 @@ body{
     background-color: #f4f4f4;
     color: #333;
     padding-top: 20px;
+    line-height: 1.6;
 }
 
 h1, h2 {
@@ -92,12 +93,16 @@ input[type="range"] {
 }
 
 .product-container {
-    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
+
 }
 .product-image {
     max-width: 100%;
@@ -146,4 +151,57 @@ h2, p, .price, .add-to-cart {
     margin-top: 20px;
     color: #007bff;
     text-decoration: none;
+}
+
+.product-item {
+    width: calc(33.3333% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.product-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Improved Styles for Product Details */
+.product-item h2 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.product-item p {
+    margin-top: 5px;
+}
+
+/* Styles for a cleaner layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        margin: 20px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    .product-item {
+        text-align: center;
+        width: calc(50% - 20px);
+    }
+
+    .product-image {
+        float: none;
+        margin-right: 0;
+    }
+
+    .product-details {
+        width: 100%;
+        margin-top: 15px;
+    }
 }
