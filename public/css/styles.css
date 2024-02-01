@@ -1,0 +1,149 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Arial', sans-serif;
+    margin: 40px;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 20px;
+}
+
+h1, h2 {
+    color: #007bff;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #007bff;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+input[type="range"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="range"] {
+    width: 80%;
+    margin-right: 5%;
+    margin-bottom: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.product-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.product-image {
+    max-width: 100%;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+}
+.product-details {
+    float: left;
+    width: calc(100% - 240px); /* Adjust width as needed */
+}
+h2, p, .price, .add-to-cart {
+    margin: 0;
+}
+.price {
+    font-weight: bold;
+    color: green;
+    margin-top: 10px;
+}
+.add-to-cart {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.action-link {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.action-link:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}

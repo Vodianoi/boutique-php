@@ -1,2 +1,7 @@
 <?php
-echo 'Yo la boutique !';
+require __DIR__ . '/../autoload.php';
+
+(new App\Controller\DotEnvEnvironment)->load(__DIR__ . '/../');
+
+require '../bootstrap/app.php';
+require '../route/web.php';
