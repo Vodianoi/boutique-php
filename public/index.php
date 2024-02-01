@@ -1,2 +1,2 @@
 <?php
-echo 'Yo la boutique !';
+echo 'Push la boutique !';
