@@ -1,15 +1,20 @@
 <?php
-include '../resources/layouts/header.tpl.php';
-echo 'Testshow.php';
+
+
+
 if (!isset($getproduct_id)) {
     echo "Mauvais produit !";
 } else {
     foreach ($getproduct_id as $row) {
+
+        $metaTitle = $row["title"];
+        $metaDescription = $row["description"];
+        include '../resources/views/layouts/header.tpl.php';
         echo $row["title"] . "     <br>";
         echo $row["description"] . "     <br>";
-        echo $row["ttc"] . "     <br>";
-    }
-} ?>
+        echo $row["ttc"] . "     <br>";}
+}
+;?>
 
     <html>
     <div clas="formArticle">
