@@ -2,5 +2,13 @@
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
 
-if ($action == null) require '../app/controllers/homeController.php';
-if ($action ==  'product') require '../app/controllers/showProductController.php';
+if (empty($action)) {
+    $action = 'home';
+}
+$routes = array(
+    'home' => '../app/controllers/homeController.php',
+    'product' => '../app/controllers/showProductController.php',
+);
+if (isset($routes[$action])) {
+    require $routes[$action];
+}

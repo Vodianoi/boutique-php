@@ -1,10 +1,18 @@
 <?php
 //fonction qui retourne un produit de la BDD
-function getProduct($pdo, $id)
+function getProduct($pdo, $product_id)
 {
-$statement = $pdo->query("SELECT products.title, products.description, products.ttc, products.stock
+    $statement = $pdo->query("SELECT products.title, products.description, products.ttc, products.stock
 FROM products
-WHERE products.id = $id
+WHERE products.id = $product_id
 ");
-return $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+//fonction qui retourne tous les produits de la BDD
+function getAllProducts($pdo)
+{
+    $statement = $pdo->query("SELECT products.id,products.title, products.description, products.ttc, products.stock
+FROM products");
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
