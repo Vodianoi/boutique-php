@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $cartItem = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
     addProductCart($cartItem['id'], $cartItem['quantity']);
-    debug_to_console('Add item : ' . json_encode($cartItem));
     header('Location: ?action=product&id=' . $cartItem['id']);
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $ids = array_column($_SESSION['cart'], 'id');
