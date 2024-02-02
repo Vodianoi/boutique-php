@@ -9,7 +9,6 @@
                     <h2><?= $product['title']; ?></h2>
                 </a>
                 <p><strong>Price:</strong> <?= $product['ttc']; ?></p>
-                <button class="add-to-cart">Add to Cart</button>
             </div>
         <?php endforeach ?>
     </div>
