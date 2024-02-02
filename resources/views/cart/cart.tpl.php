@@ -1,38 +1,46 @@
 <div class="container">
-    <h1>Cart</h1>
-
-    <table class="cart-table">
-        <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php for($i = 0; $i < count($productsInCart); $i++): ?>
-            <tr>
-                <td><img src="https://placehold.co/50x50/" alt="Product Image"></td>
-                <td><?= $productsInCart[$i]['title']?></td>
-                <td><?= $productsInCart[$i]['ttc']?>€</td>
-                <td><?= $quantities[$i]?></td>
-                <td><?= $productsInCart[$i]['ttc']*$quantities[$i]?>€</td>
-            </tr>
-            <!-- Add a horizontal line between each item -->
-            <tr class="cart-item-divider">
-                <td colspan="5"></td>
-            </tr>
-        <?php endfor; ?>
-        </tbody>
-    </table>
-    <div class="total-cart-container">
-        <h3>Total : <?= $totalCart['total'] ?>€</h3>
-    </div>
-
     <form method="post">
-        <input type="submit" name="reset"
-               value="Reset"/>
+        <h1>Cart</h1>
+
+        <table class="cart-table">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($productQuantities as $id => $quantity): ?>
+                <?php $product = getProduct($pdo, $id) ?>
+                <tr>
+                    <td><img src="https://placehold.co/50x50/" alt="Product Image"></td>
+                    <td><?= $product['title'] ?></td>
+                    <td><?= $product['ttc'] ?>€</td>
+                    <td>
+                        <label>
+                            <input type="number" name="quantity_<?= $product['id'] ?>"
+                                   value="<?= $quantity ?>" style="max-width: 50px">
+                        </label>
+                    </td>
+                    <td><?= $product['ttc'] * $quantity ?>€</td>
+                </tr>
+                <!-- Add a horizontal line between each item -->
+                <tr class="cart-item-divider">
+                    <td colspan="5"></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="total-cart-container">
+            <h3>Total : <?= $totalCart['total'] ?>€</h3>
+        </div>
+
+        <input class="add-to-cart" style="align-self: flex-start" type="submit" name="reset"
+               value="Empty cart"/>
+
+        <input class="add-to-cart" style="align-self: flex-end"  type="submit" name="update" value="Update quantities">
     </form>
 </div>

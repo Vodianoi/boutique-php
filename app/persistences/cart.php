@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\NoReturn;
+
 function getCartProducts(PDO $pdo, array $ids): false|array
 {
     if (empty($ids)) return false;
@@ -9,13 +12,16 @@ function getCartProducts(PDO $pdo, array $ids): false|array
     return $stmt->fetchAll();
 }
 
-function totalCart($products, $quantities): array
+function totalCart(PDO $pdo, $productsQuantities): array
 {
-    if(!is_array($products) || !is_array($quantities)) return array();
     $total = 0;
-    for ($i = 0; $i < count($products); $i++)
-        $total += $products[$i]['ttc'] * $quantities[$i];
-    return array('total' => $total, 'count' => count($products));
+    $count = 0;
+    foreach ($productsQuantities as $id => $quantity) {
+        $product = getProduct($pdo, $id);
+        $total += $product['ttc'] * $quantity;
+        $count += $quantity;
+    }
+    return array('total' => $total, 'count' => $count);
 }
 
 
@@ -32,46 +38,62 @@ function initCart($force = false): void
 function fakeCart(): void
 {
     initCart(true);
-    $fakeProduct1 = array(
-        'id' => random_int(1,5),
-        'quantity' => random_int(1,20)
-    );
-    $fakeProduct2 = array(
-        'id' => random_int(1,5),
-        'quantity' => random_int(1,20)
-    );
-    $fakeProduct3 = array(
-        'id' => random_int(1,5),
-        'quantity' => random_int(1,20)
+    $fakeProducts = array(
+        random_int(1, 5) => random_int(1, 20),
+        random_int(1, 5) => random_int(1, 20),
+        random_int(1, 5) => random_int(1, 20),
     );
 
-    addProductCart($fakeProduct1['id'], $fakeProduct1['quantity']);
-    addProductCart($fakeProduct2['id'], $fakeProduct2['quantity']);
-    addProductCart($fakeProduct3['id'], $fakeProduct3['quantity']);
+    foreach ($fakeProducts as $key => $quantity) {
+        addProductCart($key, $quantity);
+    }
+
 }
 
 function addProductCart($productID, $quantity): void
 {
     initCart();
-    if($i = productExistsInCart($productID))
-    {
-        echo 'index : '.$i;
-        $_SESSION['cart'][$i]['quantity'] += $quantity;
-    }
-    else {
-        $_SESSION['cart'][] = ['id' => $productID, 'quantity' => $quantity];
+    if (isset($_SESSION['cart'][$productID])) {
+        $_SESSION['cart'][$productID] += $quantity;
+    } else {
+        $_SESSION['cart'] += [$productID => $quantity];
     }
 }
 
-function productExistsInCart($productID): false|int|string
+/**
+ * @throws Exception
+ */
+function updateProductCart($productID, $newQuantity): void
 {
-
-    foreach($_SESSION['cart'] as $index => $product)
-    {
-        if($product['id'] == $productID)
-        {
-            return $index;
-        }
+    if (isset($_SESSION['cart'][$productID])) {
+        $_SESSION['cart'][$productID] = (int)$newQuantity;
+    } else {
+        throw new Exception("Can't update product, productID : " . $productID . ' not in cart!');
     }
-    return false;
 }
+
+/**
+ * @return void
+ */
+function resetCart(): void
+{
+    initCart(true);
+    header('Location: ?action=cart');
+}
+
+/**
+ * @return void
+ */
+function updateCartQuantities(): void
+{
+    foreach ($_POST as $key => $quantity)
+        if (str_contains($key, 'quantity_')) {
+            $productID = explode('_', $key)[1];
+            try {
+                updateProductCart($productID, $quantity);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        }
+}
+
