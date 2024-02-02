@@ -3,7 +3,7 @@
 echo 'test boutiqueData' . '<br \>';
 function lastBoutiqueProducts(PDO $pdo)
 {
-    $sql = "SELECT products.id, products.title, products.description, products.price
+    $sql = "SELECT products.id, products.title, products.description, products.price, products.ttc
     FROM products ORDER BY products.id DESC LIMIT 10";
     $statement = $pdo->prepare($sql);
     $statement->execute();

@@ -2,7 +2,7 @@
 
 echo 'test showAll' . '<br \>';
 
-include('../app/persistences/boutiqueData.php');
+include('../app/persistences/product.php');
 
 $lastBoutiqueProducts = lastBoutiqueProducts($pdo);
 

@@ -2,7 +2,7 @@
 
 echo 'test showProduct' . '<br \>';
 
-include('../app/persistences/boutiqueData.php');
+include('../app/persistences/product.php');
 
 echo 'test showProduct' . '<br \>';
 
