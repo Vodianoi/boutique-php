@@ -1,0 +1,85 @@
+/* Styles pour la barre de navigation */
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Styles pour la disposition du produit */
+.product {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid gray;
+    padding: 20px;
+    overflow: hidden;
+    background-color: skyblue;
+    display: flex;
+    flex-direction: column; /* Affichage en colonne */
+}
+
+.product:hover {
+    border-color: black;
+}
+
+.product-title {
+    text-align: center;
+}
+
+.product-info {
+    display: flex;
+    align-items: flex-start; /* Alignement en haut */
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.product-description {
+    flex: 1;
+}
+
+.product-description p {
+    margin: 0;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between; /* Espacement égal entre les éléments */
+    align-items: center; /* Alignement vertical */
+}
+
+.product-price {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
