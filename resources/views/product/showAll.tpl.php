@@ -8,11 +8,10 @@
 
 <?php echo 'test showAll.tpl' . '<br \>'; ?>
 
-
-
 <?php foreach ($lastBoutiqueProducts  as $product) : ?>
     <div class="product">
-        <h2 class="product-title"><?= $product['title'] ?></h2>
+        <a href="/index.php?action=showProduct&id=<?= $product['id']?>">
+            <h2 class="product-title"><?= $product['title'] ?></h2></a>
         <div class="product-info">
             <img src="https://placehold.co/200x200" alt="Image du Produit" class="product-image">
         </div>
