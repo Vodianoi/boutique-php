@@ -1,1 +1,2 @@
 <?php
+echo 'Home page';
