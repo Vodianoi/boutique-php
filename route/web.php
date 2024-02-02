@@ -25,7 +25,9 @@ $routes = array(
 
     'showAll' => '../app/controllers/showAllController.php',
 
-    'showProduct' => '../app/controllers/showProductController.php'
+    'showProduct' => '../app/controllers/showProductController.php',
+
+    'cart' => '../app/controllers/cartController.php'
 );
 
 if (isset($routes[$action])) {

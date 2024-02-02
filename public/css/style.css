@@ -55,6 +55,12 @@ nav ul li a:hover {
     margin-right: 20px;
 }
 
+.product-image-all {
+    width: 600px;
+    height: 200px;
+    margin-right: 20px;
+}
+
 .product-description {
     flex: 1;
 }
@@ -75,6 +81,55 @@ nav ul li a:hover {
 }
 
 .add-to-cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+/* Ajout de styles spécifiques pour la page du panier */
+.cart {
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.cart-item {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-image-cart {
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+}
+
+
+.cart-total {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.cart-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.validate-btn {
     background-color: #4CAF50;
     color: white;
     border: none;
