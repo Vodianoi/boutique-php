@@ -14,6 +14,8 @@
         </div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
+            <li><a href="?action=cart">Cart</a></li>
+            <li><a href="?action=fakeCart">Fill Cart</a></li>
             <li><a href="?action=signin">Sign in</a></li>
             <li><a href="?action=login">Log in</a></li>
         </ul>
