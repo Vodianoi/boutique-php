@@ -7,12 +7,5 @@ global $pdo;
 $product = lastProductData($pdo);
 if (!isset($product)) {
     echo "Aucun produit";
-} else {
-    foreach ($product as $row) {
-        echo $row["id"]. "       ";
-        echo $row["title"] . "     ";
-        echo $row["content"] . "     ";
-        echo $row["ttc"]. "     <br>";
-    }
 }
 include '../resources/views/showAll.php';
