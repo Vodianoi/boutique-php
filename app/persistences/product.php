@@ -1,5 +1,5 @@
 <?php
-function lastProductData(PDO $pdo)
+function getAllProducts(PDO $pdo)
 {
     $statement = $pdo->query('SELECT *
         FROM products
@@ -10,7 +10,7 @@ LIMIT 10');
 
 $productid = $pdo->query('SELECT id
 FROM products');
-function productByid(PDO $pdo, $product_id)
+function getProduct(PDO $pdo, $product_id)
 {
     $contentblogPost = $pdo->query("SELECT id, title, description, weight, ttc
     FROM products

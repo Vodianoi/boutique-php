@@ -2,9 +2,9 @@
 $MetaTitle = "Catalogue";
 $MetaDescription = "Le catalogue du site.";
 include '../resources/views/layouts/header.tpl.php';
-include '../app/persistences/boutiqueData.php';
+include '../app/persistences/product.php';
 global $pdo;
-$product = lastProductData($pdo);
+$product = getAllProducts($pdo);
 if (!isset($product)) {
     echo "Aucun produit";
 }

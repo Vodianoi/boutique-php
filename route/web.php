@@ -3,7 +3,6 @@
  * Inclusion de la database.
  **************************/
 include ('../config/database.php');
-echo '<br>';
 
 /**************
  * Routing
