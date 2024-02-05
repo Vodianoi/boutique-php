@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //Redirect to product added
     header('Location: ?action=product&id=' . $cartItem['id']);
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $productQuantities = $_SESSION['cart'];
+    $productQuantities = $_SESSION['cart'] ?? [];
     $totalCart = totalCart($pdo, $productQuantities);
     include('../resources/views/cart/cart.tpl.php');
 }
