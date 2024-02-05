@@ -6,19 +6,21 @@ $metatitle = "Boutique";
 $metaDescription = "Boutique";
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 
-$productId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
 include('../config/database.php');
 
 if($action === null){
     $action = '/';
 }
-if($action == 'showAll' && isset($productId)){
-    include ("../app/controllers/showAllController.php");
-}
-if($action == 'showProduct' && isset($productId)){
-    include ("../app/controllers/showProductController.php");
-}
+// a changer
+//if($action == 'showAll' && isset($productId)){
+//    include ("../app/controllers/showAllController.php");
+//}
+//if($action == 'showProduct' && isset($productId)){
+//    include ("../app/controllers/showProductController.php");
+//}
+//if($action == 'cart' && isset($productId)){
+//    include ("../app/controllers/cartController.php");
+//}
 
 $routes = array(
     '/' => '../app/controllers/homeController.php',
@@ -27,10 +29,9 @@ $routes = array(
 
     'showProduct' => '../app/controllers/showProductController.php',
 
-    'cart' => '../app/controllers/cartController.php'
+    'cart' => '../app/controllers/cartController.php',
 );
 
 if (isset($routes[$action])) {
     include $routes[$action];
 }
-
