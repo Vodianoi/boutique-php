@@ -10,6 +10,7 @@
                 <th>Unit Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +27,9 @@
                         </label>
                     </td>
                     <td><?= $product['ttc'] * $quantity ?>€</td>
+                    <td>
+                        <a class="add-to-cart" href="?action=cartDelete&id=<?= $product['id'] ?>">Delete</a>
+                    </td>
                 </tr>
                 <!-- Add a horizontal line between each item -->
                 <tr class="cart-item-divider">

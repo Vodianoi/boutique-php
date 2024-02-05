@@ -66,7 +66,10 @@ function addProductCart($productID, $quantity): void
 function updateProductCart($productID, $newQuantity): void
 {
     if (isset($_SESSION['cart'][$productID])) {
-        $_SESSION['cart'][$productID] = (int)$newQuantity;
+        if ($newQuantity == 0) {
+            deleteProductCart($productID);
+        } else
+            $_SESSION['cart'][$productID] = (int)$newQuantity;
     } else {
         throw new Exception("Can't update product, productID : " . $productID . ' not in cart!');
     }
@@ -95,5 +98,15 @@ function updateCartQuantities(): void
                 echo $e->getMessage();
             }
         }
+}
+
+function deleteProductCart( $id): void
+{
+    if(!isset($_SESSION['cart'])) return;
+
+    if(isset($_SESSION['cart'][$id]))
+    {
+        unset($_SESSION['cart'][$id]);
+    }
 }
 
