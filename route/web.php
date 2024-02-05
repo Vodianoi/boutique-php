@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $controllerFolder = '../app/controllers/';
 $metaTitle = ucfirst($action);
