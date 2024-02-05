@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../app/persistences/cart.php');
 require('../app/persistences/product.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,7 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
     if (isset($_POST['update'])) {
-        updateCartQuantities();
+        $idQuantities = quantities_idToIDQuantities($_POST);
+        var_dump($idQuantities);
+        try {
+            updateCartQuantities($idQuantities);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
 
         //Redirect to cart page
         header('Location: ?action=cart');

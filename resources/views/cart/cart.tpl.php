@@ -46,5 +46,6 @@
                value="Empty cart"/>
 
         <input class="add-to-cart" style="align-self: flex-end"  type="submit" name="update" value="Update quantities">
+        <a class="add-to-cart" style="align-self: flex-end" href="?action=command">Checkout</a>
     </form>
 </div>

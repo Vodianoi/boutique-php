@@ -1,17 +1,5 @@
 <?php
 
-use JetBrains\PhpStorm\NoReturn;
-
-function getCartProducts(PDO $pdo, array $ids): false|array
-{
-    if (empty($ids)) return false;
-    $in = str_repeat('?,', count($ids) - 1) . '?';
-    $sql = "SELECT * FROM products WHERE id IN ($in)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($ids);
-    return $stmt->fetchAll();
-}
-
 function totalCart(PDO $pdo, $productsQuantities): array
 {
     $total = 0;
@@ -44,8 +32,8 @@ function fakeCart(): void
         random_int(1, 5) => random_int(1, 20),
     );
 
-    foreach ($fakeProducts as $key => $quantity) {
-        addProductCart($key, $quantity);
+    foreach ($fakeProducts as $id => $quantity) {
+        addProductCart($id, $quantity);
     }
 
 }
@@ -66,7 +54,7 @@ function addProductCart($productID, $quantity): void
 function updateProductCart($productID, $newQuantity): void
 {
     if (isset($_SESSION['cart'][$productID])) {
-        if ($newQuantity == 0) {
+        if ($newQuantity <= 0) {
             deleteProductCart($productID);
         } else
             $_SESSION['cart'][$productID] = (int)$newQuantity;
@@ -85,28 +73,41 @@ function resetCart(): void
 }
 
 /**
+ * @param $idQuantities
  * @return void
+ * @throws Exception
  */
-function updateCartQuantities(): void
+function updateCartQuantities($idQuantities): void
 {
-    foreach ($_POST as $key => $quantity)
-        if (str_contains($key, 'quantity_')) {
-            $productID = explode('_', $key)[1];
-            try {
-                updateProductCart($productID, $quantity);
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }
-        }
+    foreach ($idQuantities as $productID => $quantity)
+        updateProductCart($productID, $quantity);
 }
 
-function deleteProductCart( $id): void
+function deleteProductCart($id): void
 {
-    if(!isset($_SESSION['cart'])) return;
+    if (!isset($_SESSION['cart'])) return;
 
-    if(isset($_SESSION['cart'][$id]))
-    {
+    if (isset($_SESSION['cart'][$id])) {
         unset($_SESSION['cart'][$id]);
     }
 }
+
+function quantities_idToIDQuantities($quantities_id): array
+{
+    $res = [];
+    foreach ($quantities_id as $key => $quantity) {
+        if (str_contains($key, 'quantity_')) {
+            $productID = explode('_', $key)[1];
+            $res += [$productID => $quantity];
+        }
+    }
+    return $res;
+
+
+}
+
+
+
+
+
 
