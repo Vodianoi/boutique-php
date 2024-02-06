@@ -20,7 +20,7 @@
                 <?php foreach ($productQuantities as $id => $quantity): ?>
                     <?php $product = getProduct($pdo, $id) ?>
                     <tr>
-                        <td><img src="https://placehold.co/50x50/" alt="Product Image"></td>
+                        <td><img src="https://placekitten.com/50/50/" alt="Product Image"></td>
                         <td><?= $product['title'] ?></td>
                         <td><?= $product['ttc'] ?>€</td>
                         <td>

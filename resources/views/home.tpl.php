@@ -4,7 +4,7 @@
     <div class="product-container">
         <?php foreach ($products as $product): ?>
             <div class="product-item">
-                <img src="https://placehold.co/100x100/" alt="Product Image" class="product-image">
+                <img src="https://placekitten.com/100/100/" alt="Product Image" class="product-image">
                 <a href="?action=product&id=<?= $product['id'] ?>">
                     <h2><?= $product['title']; ?></h2>
                 </a>
