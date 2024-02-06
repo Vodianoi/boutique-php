@@ -8,7 +8,12 @@
                 <a href="?action=product&id=<?= $product['id'] ?>">
                     <h2><?= $product['title']; ?></h2>
                 </a>
-                <p><strong>Price:</strong> <?= $product['ttc']; ?></p>
+                <p><strong>Price:</strong> <?= $product['ttc']; ?>€</p>
+                <?php if ($product['stock'] != 0): ?>
+                    <p><strong>Stock:</strong> <?= $product['stock']; ?></p>
+                <?php else: ?>
+                    <p><strong>Out of stock</p>
+                <?php endif; ?>
             </div>
         <?php endforeach ?>
     </div>
