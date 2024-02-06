@@ -7,6 +7,13 @@ VALUES (CURDATE(), CURDATE() + 7, ROUND(RAND()*5))';
     $orderID = $pdo->lastInsertId();
 
     foreach($_SESSION['cart'] as $productID => $quantity){
+        $stock = getProductStockByID($pdo, $productID);
+
+        if($quantity > $stock)
+        {
+            return 'y\'a pu';
+        }
+
         $sql = 'INSERT INTO orders_products (orders_id, products_id, quantity) 
 VALUES (:orders_id, :products_id, :quantity)';
         $stmt = $pdo->prepare($sql);
@@ -19,7 +26,20 @@ VALUES (:orders_id, :products_id, :quantity)';
     return $orderID;
 }
 
-function commandByID(PDO $pdo, int $id)
+/**
+ * @param PDO $pdo
+ * @param int|string $productID
+ * @return int
+ */
+function getProductStockByID(PDO $pdo, int|string $productID): int
+{
+    $sql = 'SELECT stock FROM products WHERE id=?';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$productID]);
+    return $stmt->fetchColumn();
+}
+
+function commandByID(PDO $pdo, int $id): false|array
 {
     $sql = 'SELECT * FROM orders 
          JOIN orders_products as op ON orders.id = op.orders_id

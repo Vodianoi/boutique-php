@@ -1,10 +1,13 @@
 <?php
-session_start();
 include '../app/persistences/command.php';
 include '../app/persistences/cart.php';
 if(!isset($_GET['id']))
 {
     $id = checkout($pdo);
+    if($id == 'y\'a pu'){
+        echo 'y\'a pu';
+        exit();
+    }
     resetCart();
     header('Location: ?action=command&id='.$id);
 }
