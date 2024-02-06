@@ -8,9 +8,10 @@ function initCart() {
 function fakeCart() {
     initCart();
 
-    $_SESSION['cart'][] = ["id" => 1, "qte" => rand(1, 10)];
-    $_SESSION['cart'][] = ["id" => 3, "qte" => rand(1, 10)];
-    $_SESSION['cart'][] = ["id" => 5, "qte" => rand(1, 10)];
+    addProductCart(1, rand(1, 10));
+    addProductCart(3, rand(11, 20));
+    addProductCart(5, rand(21, 30));
+
 }
 
 function productDetails(PDO $pdo, $productId)
@@ -28,12 +29,21 @@ function totalCart($pdo) {
     $totalProducts = 0;
 
     if (isset($_SESSION['cart'])) {
-        foreach ($_SESSION['cart'] as $product) {
-            $productDetails = productDetails($pdo, $product["id"]);
-            $total += $productDetails['ttc'] * (int)$product['qte'];
-            $totalProducts += (int)$product['qte'];
+        foreach ($_SESSION['cart'] as $id => $quantity) {
+            $productDetails = productDetails($pdo, $id);
+            $total += $productDetails['ttc'] * (int)$quantity;
+            $totalProducts += (int)$quantity;
         }
     }
 
     return array("total" => $total, "totalProducts" => $totalProducts);
+}
+
+function addProductCart($productId, $quantity)
+{
+    if (isset($_SESSION['cart'][$productId])) {
+        $_SESSION['cart'][$productId] += $quantity;
+    } else {
+        $_SESSION['cart'] += [$productId => $quantity];
+    }
 }

@@ -14,6 +14,8 @@
             <li><a href="/index.php?action=/">Home</a></li>
             <li><a href="/index.php?action=showAll">Catalogue</a></li>
             <li><a href="/index.php?action=cart">Cart</a></li>
+            <li><a href="/index.php?action=fakeCart">FakeCart</a></li>
+            <li><a href="/index.php?action=resetCartController">ResetCart</a></li>
         </ul>
     </nav>
 </header>

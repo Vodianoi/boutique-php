@@ -11,16 +11,6 @@ include('../config/database.php');
 if($action === null){
     $action = '/';
 }
-// a changer
-//if($action == 'showAll' && isset($productId)){
-//    include ("../app/controllers/showAllController.php");
-//}
-//if($action == 'showProduct' && isset($productId)){
-//    include ("../app/controllers/showProductController.php");
-//}
-//if($action == 'cart' && isset($productId)){
-//    include ("../app/controllers/cartController.php");
-//}
 
 $routes = array(
     '/' => '../app/controllers/homeController.php',
@@ -30,6 +20,10 @@ $routes = array(
     'showProduct' => '../app/controllers/showProductController.php',
 
     'cart' => '../app/controllers/cartController.php',
+
+    'fakeCart' => '../app/controllers/fakeCartController.php',
+
+    'resetCartController' => '../app/controllers/resetCartController.php',
 );
 
 if (isset($routes[$action])) {
