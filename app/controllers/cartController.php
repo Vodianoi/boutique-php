@@ -1,5 +1,4 @@
 <?php
-session_start();
 require('../app/persistences/cart.php');
 require('../app/persistences/product.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
         //Redirect to cart page
         header('Location: ?action=cart');
         exit();
@@ -28,5 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $productQuantities = $_SESSION['cart'] ?? [];
     $totalCart = totalCart($pdo, $productQuantities);
+    $_SESSION['total'] = $totalCart;
     include('../resources/views/cart/cart.tpl.php');
 }
