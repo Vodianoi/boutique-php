@@ -5,7 +5,7 @@ if(!isset($_GET['id']))
 {
     $id = checkout($pdo);
     if($id == 'y\'a pu'){
-        echo 'y\'a pu';
+        echo 'y\'a pu, commande annulée';
         exit();
     }
     resetCart();
