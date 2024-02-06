@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $cookieDuration = 60 * 60 * 24 * 60; // 60 jours
             setcookie('autoconnection', $cookieString, time() + $cookieDuration);
         }
-        var_dump(customerIsAdminByEmail($pdo, $user['email']));
         $_SESSION['admin'] = customerIsAdminByEmail($pdo, $user['email']);
 
         header('Location: /');
