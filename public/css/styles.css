@@ -364,6 +364,49 @@ h2, p, .price, .add-to-cart {
     background-color: #0056b3;
 }
 
+/* Custom Styles for Update Product Form */
+.update-product-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-product-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.update-product-form input[type="text"],
+.update-product-form textarea,
+.update-product-form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.update-product-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.update-product-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
 .logo{
     margin-top: 50px;
     margin-left: 150px;
