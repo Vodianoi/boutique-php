@@ -6,7 +6,7 @@ function getProduct($pdo, $product_id)
 FROM products
 WHERE products.id = $product_id
 ");
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $statement->fetch(PDO::FETCH_ASSOC);
 }
 
 //fonction qui retourne tous les produits de la BDD

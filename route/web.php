@@ -8,6 +8,7 @@ if (empty($action)) {
 $routes = array(
     'home' => '../app/controllers/homeController.php',
     'product' => '../app/controllers/showProductController.php',
+    'cart' => '../app/controllers/showCartController.php',
 );
 if (isset($routes[$action])) {
     require $routes[$action];

@@ -1,7 +1,5 @@
 <?php
 
-$allProduct = getAllProducts($pdo);
-
 if (!empty($allProduct)):
     foreach ($allProduct as $value): ?>
         <div class="homepage">
