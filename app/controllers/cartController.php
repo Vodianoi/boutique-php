@@ -1,6 +1,4 @@
 <?php
-require('../app/persistences/cart.php');
-require('../app/persistences/product.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['reset'])) {
         resetCart();
@@ -8,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (isset($_POST['update'])) {
         $idQuantities = quantities_idToIDQuantities($_POST);
-        var_dump($idQuantities);
         try {
             updateCartQuantities($idQuantities);
         } catch (Exception $e) {
@@ -27,5 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productQuantities = $_SESSION['cart'] ?? [];
     $totalCart = totalCart($pdo, $productQuantities);
     $_SESSION['total'] = $totalCart;
-    include('../resources/views/cart/cart.tpl.php');
+    if (empty($productQuantities))
+        include '../resources/views/errors/cartEmpty.php';
+    else
+        include('../resources/views/cart/cart.tpl.php');
 }

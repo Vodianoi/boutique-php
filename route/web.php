@@ -1,5 +1,4 @@
 <?php
-session_start();
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $controllerFolder = '../app/controllers/';
 $metaTitle = ucfirst($action);
@@ -16,6 +15,10 @@ foreach ($dirArray as $file){
 
 $route = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
 $route = $route ?? "home";
+
+
+
+
 require('../resources/views/layouts/header.tpl.php');
 if (in_array($route, $routeArray)){
     $i = array_search($route, $routeArray);

@@ -1,19 +1,23 @@
 <div class="container">
-    <h1>Latest Products</h1>
+    <h1 class="mt-5">Latest Products</h1>
 
-    <div class="product-container">
+    <div class="row">
         <?php foreach ($products as $product): ?>
-            <div class="product-item">
-                <img src="https://placekitten.com/100/100/" alt="Product Image" class="product-image">
-                <a href="?action=product&id=<?= $product['id'] ?>">
-                    <h2><?= $product['title']; ?></h2>
-                </a>
-                <p><strong>Price:</strong> <?= $product['ttc']; ?>€</p>
-                <?php if ($product['stock'] != 0): ?>
-                    <p><strong>Stock:</strong> <?= $product['stock']; ?></p>
-                <?php else: ?>
-                    <p><strong>Out of stock</p>
-                <?php endif; ?>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://placehold.co/100x100/" alt="Product Image" class="card-img-top">
+                    <div class="card-body">
+                        <a href="?action=product&id=<?= $product['id'] ?>">
+                            <h2 class="card-title"><?= $product['title']; ?></h2>
+                        </a>
+                        <p class="card-text"><strong>Price:</strong> <?= $product['ttc']; ?>€</p>
+                        <?php if ($product['stock'] != 0): ?>
+                            <p class="card-text"><strong>Stock:</strong> <?= $product['stock']; ?></p>
+                        <?php else: ?>
+                            <p class="card-text"><strong>Out of stock</strong></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
         <?php endforeach ?>
     </div>

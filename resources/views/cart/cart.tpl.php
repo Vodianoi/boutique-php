@@ -1,57 +1,53 @@
 <div class="container">
-    <?php if (empty($productQuantities)): ?>
-        <h1>PANIER VIDE (empty) !!!!!!!!!</h1>
-    <?php else: ?>
-        <form method="post">
+    <form method="post">
 
-            <h1>Cart</h1>
-            <table class="cart-table">
+        <h1>Cart</h1>
+        <div class="table-responsive">
+            <table class="table">
                 <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th></th>
+                    <th scope="col"></th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($productQuantities as $id => $quantity): ?>
                     <?php $product = getProduct($pdo, $id) ?>
                     <tr>
-                        <td><img src="https://placekitten.com/50/50/" alt="Product Image"></td>
+                        <td><img src="https://placehold.co/50x50/" alt="Product Image"></td>
                         <td><?= $product['title'] ?></td>
                         <td><?= $product['ttc'] ?>€</td>
                         <td>
-                            <label>
-                                <input type="number" name="quantity_<?= $product['id'] ?>"
-                                       value="<?= $quantity ?>" style="max-width: 50px">
-                            </label>
+                            <input type="number" name="quantity_<?= $product['id'] ?>"
+                                   value="<?= $quantity ?>" min="1" class="form-control" style="max-width: 100px">
                         </td>
                         <td><?= $product['ttc'] * $quantity ?>€</td>
                         <td>
-                            <a class="add-to-cart" href="?action=cartDelete&id=<?= $product['id'] ?>">Delete</a>
+                            <a class="btn btn-danger" href="?action=cartDelete&id=<?= $product['id'] ?>">Delete</a>
                         </td>
                     </tr>
                     <!-- Add a horizontal line between each item -->
                     <tr class="cart-item-divider">
-                        <td colspan="5"></td>
+                        <td colspan="6"></td>
                     </tr>
                 <?php endforeach; ?>
 
                 </tbody>
             </table>
-            <div class="total-cart-container">
+        </div>
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-4">
                 <h3>Total : <?= $totalCart['total'] ?>€</h3>
             </div>
-
-            <input class="add-to-cart" style="align-self: flex-start" type="submit" name="reset"
-                   value="Empty cart"/>
-
-            <input class="add-to-cart" style="align-self: flex-end" type="submit" name="update"
-                   value="Update quantities">
-            <a class="add-to-cart" style="align-self: flex-end" href="?action=command">Checkout</a>
-        </form>
-    <?php endif; ?>
+            <div class="col-md-8">
+                <input class="btn btn-secondary mr-2" type="submit" name="reset" value="Empty cart"/>
+                <input class="btn btn-primary mr-2" type="submit" name="update" value="Update quantities">
+                <a class="btn btn-success" href="?action=command">Checkout</a>
+            </div>
+        </div>
+    </form>
 </div>

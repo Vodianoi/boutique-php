@@ -1,9 +1,10 @@
 <?php
-function checkout(PDO $pdo): false|string
+function checkout(PDO $pdo, $customerID): false|string
 {
     $sql = 'INSERT INTO orders (command_date, delivery_date, clients_id)
-VALUES (CURDATE(), CURDATE() + 7, ROUND(RAND()*5))';
-    $stmt = $pdo->query($sql);
+VALUES (CURDATE(), CURDATE() + 7, ?)';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$customerID]);
     $orderID = $pdo->lastInsertId();
 
     foreach($_SESSION['cart'] as $productID => $quantity){
@@ -11,7 +12,7 @@ VALUES (CURDATE(), CURDATE() + 7, ROUND(RAND()*5))';
 
         if($quantity > $stock)
         {
-            return 'y\'a pu';
+            return false;
         }
 
         $sql = 'INSERT INTO orders_products (orders_id, products_id, quantity) 
@@ -62,4 +63,15 @@ function totalCommand(PDO $pdo,int|array $command): array
         'total' => $total,
         'count' => count($command)
     );
+}
+
+function getCustomerNameByCommandID(PDO $pdo, $id)
+{
+    $sql = 'SELECT c.firstname FROM orders 
+JOIN boutique.customers c on orders.clients_id = c.id
+WHERE orders.id = ?
+';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    return $stmt->fetchColumn();
 }

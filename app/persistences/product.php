@@ -24,7 +24,6 @@ function deleteProduct(PDO $pdo, $id): bool
 function updateProduct(PDO $pdo, $product): bool
 {
     $category = getCategoryIDByName($pdo, $product['category']);
-    var_dump($category);
     $sql = 'UPDATE products 
     SET title=:title, description=:description, price=:price, weight=:weight, tax=:tax, ttc=:ttc, stock=:stock, categories_id=:category
     WHERE id=:id';

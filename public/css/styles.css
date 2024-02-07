@@ -4,12 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: 'Arial', sans-serif;
-    margin: 40px;
+    margin: 20px;
     background-color: #f4f4f4;
     color: #333;
-    padding-top: 20px;
     line-height: 1.6;
 }
 
@@ -21,11 +21,7 @@ header {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-
 }
 
 form {
@@ -46,7 +42,11 @@ label {
 input[type="text"],
 input[type="date"],
 textarea,
-input[type="range"] {
+input[type="range"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="checkbox"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -55,19 +55,12 @@ input[type="range"] {
     box-sizing: border-box;
 }
 
-input[type="range"] {
-    width: 80%;
-    margin-right: 5%;
-    margin-bottom: 0;
-}
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
 }
-
-
 
 .nav-links {
     list-style: none;
@@ -97,26 +90,28 @@ input[type="range"] {
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
-
 }
+
 .product-image {
     max-width: 100%;
     height: auto;
-    float: left;
     margin-right: 20px;
 }
+
 .product-details {
-    float: left;
     width: calc(100% - 240px); /* Adjust width as needed */
 }
+
 h2, p, .price, .add-to-cart {
     margin: 0;
 }
+
 .price {
     font-weight: bold;
     color: green;
     margin-top: 10px;
 }
+
 .add-to-cart {
     background-color: #3498db;
     color: #fff;
@@ -160,7 +155,6 @@ h2, p, .price, .add-to-cart {
     border-radius: 5px;
 }
 
-/* Improved Styles for Product Details */
 .product-item h2 {
     margin-top: 10px;
     font-size: 1.2em;
@@ -170,7 +164,6 @@ h2, p, .price, .add-to-cart {
     margin-top: 5px;
 }
 
-/* Styles for a cleaner layout */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -180,11 +173,6 @@ h2, p, .price, .add-to-cart {
 .cart-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.cart-table {
-    width: 100%;
     margin-top: 20px;
 }
 
@@ -204,7 +192,6 @@ h2, p, .price, .add-to-cart {
     margin-right: 10px;
 }
 
-/* Add style for horizontal line */
 .cart-item-divider {
     border-top: 1px solid #ddd;
     margin-top: 10px;
@@ -236,7 +223,6 @@ h2, p, .price, .add-to-cart {
     text-align: right;
     margin-top: 20px;
 }
-
 
 .error-container {
     text-align: center;
@@ -274,140 +260,21 @@ h2, p, .price, .add-to-cart {
     text-decoration: underline;
 }
 
-.title-head{
+.title-head {
     min-height: 150px;
     display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
-    /*flex-wrap: wrap;*/
 }
 
-.header-cart{
+.header-cart {
     border: black thick double;
     margin-left: 1000px;
     margin-top: 50px;
-
-    .p {
-        margin: 20px;
-    }
 }
 
-.login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-}
-
-.login-container label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-.login-container input[type="email"],
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.login-container label input[type="checkbox"] {
-    margin-left: 5px;
-}
-
-.signup-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.signup-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-.signup-form input[type="text"],
-.signup-form input[type="email"],
-.signup-form input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.signup-form button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.signup-form button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Custom Styles for Update Product Form */
-.update-product-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.update-product-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-.update-product-form input[type="text"],
-.update-product-form textarea,
-.update-product-form input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.update-product-form button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.update-product-form button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-
-.logo{
+.logo {
     margin-top: 50px;
     margin-left: 150px;
 }
@@ -417,15 +284,10 @@ h2, p, .price, .add-to-cart {
     text-decoration: none;
     font-size: 1.5em;
     font-weight: bold;
-
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    body {
-        margin: 20px;
-    }
-
     header {
         padding: 10px;
     }
@@ -444,8 +306,36 @@ h2, p, .price, .add-to-cart {
         width: 100%;
         margin-top: 15px;
     }
+
     .cart-table img {
         max-width: 30px;
         max-height: 30px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .logo {
+        margin-left: 20px;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .header-cart {
+        margin-left: 20px;
+    }
+
+    .title-head {
+        margin-left: 20px;
+    }
+
+    .login-container,
+    .signup-form,
+    .update-product-form {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }

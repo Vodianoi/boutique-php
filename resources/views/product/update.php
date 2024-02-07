@@ -1,36 +1,59 @@
+<div class="container">
+    <div class="row justify-content-center border rounded mx-2 pt-5 pb-5">
+        <div class="col-md-8">
+            <form class="update-product-form" action="?action=updateProduct&id=<?= $product['id'] ?>" method="POST">
+                <div class="form-group mb-2">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="<?= $product['title'] ?>" required>
+                </div>
 
-<form class="update-product-form" action="?action=updateProduct&id=<?= $product['id'] ?>" method="POST">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" value="<?= $product['title'] ?>" required>
+                <div class="form-group mb-2">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows="4"><?= $product['description'] ?></textarea>
+                </div>
 
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" rows="4"><?= $product['description'] ?></textarea>
+                <div class="form-group mb-2">
+                    <label for="price">Price:</label>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" onchange="updateTTC()" value="<?= $product['price'] ?>" required>
+                </div>
 
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" step="0.01" min="0" onchange="updateTTC()" value="<?= $product['price'] ?>" required>
+                <div class="form-group mb-2">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" class="form-control" id="weight" name="weight" step="0.01" min="0" value="<?= $product['weight'] ?>">
+                </div>
 
-    <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" name="weight" step="0.01" min="0" value="<?= $product['weight'] ?>">
+                <div class="form-group mb-2">
+                    <label for="tax">Tax:</label>
+                    <input type="number" class="form-control" id="tax" name="tax" step="0.01" min="0" onchange="updateTTC()" value="<?= $product['tax'] ?>">
+                </div>
 
-    <label for="tax">Tax:</label>
-    <input type="number" id="tax" name="tax" step="0.01" min="0" onchange="updateTTC()" value="<?= $product['tax'] ?>">
+                <div class="form-group mb-2">
+                    <label for="ttc">Total Price (Tax included):</label>
+                    <input type="number" class="form-control" id="ttc" name="ttc" step="0.01" min="0" readonly>
+                </div>
 
-    <label for="ttc">Total Price (Tax included):</label>
-    <input type="number" id="ttc" name="ttc" step="0.01" min="0" readonly>
+                <div class="form-group mb-2">
+                    <label for="stock">Stock:</label>
+                    <input type="number" class="form-control" id="stock" name="stock" min="0" value="<?= $product['stock'] ?>" required>
+                </div>
 
-    <label for="stock">Stock:</label>
-    <input type="number" id="stock" name="stock" min="0" value="<?= $product['stock'] ?>" required>
+                <input type="hidden" id="id" name="id" value="<?= $product['id'] ?>">
 
-    <input id="id" name="id" type="hidden" value="<?= $product['id'] ?>"/>
-    <label for="category">Category:</label>
-    <select name="category" id="category">
-        <?php foreach($categories as $category): ?>
-            <option value="<?= $category['name'] ?>" <?php if(isset($productCategory) && is_string($productCategory) && $category['name'] == $productCategory): ?> selected <?php endif; ?>><?= ucfirst($category['name']) ?></option>
-        <?php endforeach; ?>
-    </select>
+                <div class="form-group mb-2">
+                    <label for="category">Category:</label>
+                    <select class="form-control" name="category" id="category">
+                        <?php foreach($categories as $category): ?>
+                            <option value="<?= $category['name'] ?>" <?php if(isset($productCategory) && is_string($productCategory) && $category['name'] == $productCategory): ?> selected <?php endif; ?>><?= ucfirst($category['name']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-    <button type="submit">Update Product</button>
-</form>
+                <button type="submit" class="btn btn-primary mb-2">Update Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     function updateTTC() {
         let price = Number(document.getElementById('price').value);
