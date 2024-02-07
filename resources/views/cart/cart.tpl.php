@@ -25,9 +25,18 @@ echo 'test cart.tpl' . '<br \>';
                     <div class="cart-column">
                         <div class="price-unit"><?= $product['ttc'] ?> €</div>
                     </div>
-                    <div class="cart-column">
-                        <div class="quantity"><?= $quantity ?> </div>
-                    </div>
+                    <form action="/index.php?action=cart" method="POST">
+                        <div class="cart-column">
+                            <label for="quantity">Quantité:</label>
+                            <input type="number" class="quantity" id="quantity" name="quantity[<?= $id ?>]" min="0" value="<?= $quantity ?>">
+                            <input type="hidden" name="id" value="<?= $id ?>">
+                            <button type="submit" name="update_cart">Update the cart</button>
+                        </div>
+                        <div class="cart-column">
+                            <button type="submit" name="delete_product" value="<?= $id ?>">X</button>
+                        </div>
+                    </form>
+
                     <div class="cart-column">
                         <div class="total"><?= $product['ttc'] * $quantity; ?> €</div>
                     </div>
@@ -42,3 +51,4 @@ echo 'test cart.tpl' . '<br \>';
         </div>
     <?php } ?>
 </section>
+

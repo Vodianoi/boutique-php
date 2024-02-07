@@ -1,11 +1,13 @@
 <?php
 
 echo 'test cart fonction' . '<br \>';
-function initCart() {
+function initCart()
+{
     $_SESSION['cart'] = array();
 }
 
-function fakeCart() {
+function fakeCart()
+{
     initCart();
 
     addProductCart(1, rand(1, 10));
@@ -24,7 +26,8 @@ function productDetails(PDO $pdo, $productId)
     return $statement->fetch();
 }
 
-function totalCart($pdo) {
+function totalCart($pdo)
+{
     $total = 0;
     $totalProducts = 0;
 
@@ -46,4 +49,18 @@ function addProductCart($productId, $quantity)
     } else {
         $_SESSION['cart'] += [$productId => $quantity];
     }
+}
+
+function updateProductCart($productId, $quantity)
+{
+    if ($quantity == 0) {
+        unset($_SESSION['cart'][$productId]);
+    } elseif (isset($_SESSION['cart'][$productId])) {
+        $_SESSION['cart'][$productId] = $quantity;
+    }
+}
+
+function deleteProductCart($productId)
+{
+    unset($_SESSION['cart'][$productId]);
 }

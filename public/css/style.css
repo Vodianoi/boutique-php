@@ -121,7 +121,22 @@ nav ul li a:hover {
 
 .cart-column {
     flex: 1;
+    display: flex; /* Ajout de la propriété display:flex */
+    align-items: center; /* Pour centrer verticalement les éléments */
+    justify-content: space-between; /* Pour espacer les éléments sur l'axe horizontal */
     text-align: center;
+}
+
+.cart-column .quantity {
+    width: 50px; /* Réglez la largeur du champ de quantité selon vos besoins */
+}
+
+.cart-column button {
+    background-color: transparent;
+    border: none;
+    color: red; /* Couleur de votre choix pour le bouton X */
+    font-size: 18px; /* Taille de police de votre choix */
+    cursor: pointer;
 }
 
 .cart-item {

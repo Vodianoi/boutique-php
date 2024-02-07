@@ -5,9 +5,9 @@ echo 'test fakeCart.tpl' . '<br \>';
 <section class="cart">
 
     <?php if (!isset($_SESSION['cart'])) { ?>
-        <h1>Your cart is empty</h1>
+        <h1>Your fake cart is empty</h1>
     <?php } else { ?>
-        <h1>Your cart</h1>
+        <h1>Your fake cart</h1>
         <div class="cart-header">
             <div class="cart-column">Product</div>
             <div class="cart-column">Price unit</div>
