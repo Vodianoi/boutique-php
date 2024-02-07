@@ -10,6 +10,10 @@ $routes = array(
     'product' => '../app/controllers/showProductController.php',
     'cart' => '../app/controllers/showCartController.php',
 );
+require '../resources/views/layouts/header.tpl.php';
+
 if (isset($routes[$action])) {
     require $routes[$action];
 }
+
+require '../resources/views/layouts/footer.tpl.php';
