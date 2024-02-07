@@ -36,10 +36,26 @@ function totalCart(PDO $pdo)
 
     }
     //retourne un tableau avec le total et le total des quantités
-    return  [
+    return [
         'total' => $total,
         'quantityProduct' => $totalQuantity,
 
     ];
+
+}
+
+function addProductCart($productID, $quantity): void
+{
+    //appel la fonction iniCart pour initialiser une session et un panier vide.
+    //initCart();
+
+    //si le produit existe déjà on rajoute la quantité demandé sinon ajoute tout simplement le produit dans le panier.
+    if (isset($_SESSION['cart'][$productID])) {
+        $_SESSION['cart'][$productID] += $quantity;
+    } else {
+        $_SESSION['cart'] += [
+            $productID => $quantity
+        ];
+    }
 
 }

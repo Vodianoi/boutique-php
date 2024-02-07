@@ -4,7 +4,7 @@ require '../app/persistences/cart.php';
 require '../app/persistences/product.php';
 
 initCart();
-fakeCart();
+//fakeCart();
 
 
 foreach ($_SESSION['cart'] as $productID => $quantity) {
@@ -19,8 +19,8 @@ foreach ($_SESSION['cart'] as $productID => $quantity) {
 
 }
 
-$totalCart = totalCart($pdo);
 
+$totalCart = totalCart($pdo);
 
 
 

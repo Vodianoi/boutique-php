@@ -9,6 +9,7 @@ $routes = array(
     'home' => '../app/controllers/homeController.php',
     'product' => '../app/controllers/showProductController.php',
     'cart' => '../app/controllers/showCartController.php',
+    'addProduct' => '../app/controllers/addProductCartController.php',
 );
 require '../resources/views/layouts/header.tpl.php';
 
