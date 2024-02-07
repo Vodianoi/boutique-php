@@ -28,7 +28,8 @@ echo 'test cart.tpl' . '<br \>';
                     <form action="/index.php?action=cart" method="POST">
                         <div class="cart-column">
                             <label for="quantity">Quantité:</label>
-                            <input type="number" class="quantity" id="quantity" name="quantity[<?= $id ?>]" min="0" value="<?= $quantity ?>">
+                            <input type="number" class="quantity" id="quantity" name="quantity[<?= $id ?>]" min="0"
+                                   value="<?= $quantity ?>">
                             <input type="hidden" name="id" value="<?= $id ?>">
                             <button type="submit" name="update_cart">Update the cart</button>
                         </div>

@@ -83,7 +83,7 @@ nav ul li a:hover {
 .add-to-cart-btn {
     background-color: #4CAF50;
     color: white;
-    border: none;
+    border: 2px solid #45a049; /* Ajout d'une bordure */
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -98,11 +98,9 @@ nav ul li a:hover {
     font-family: Arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-}
-
-.cart-header,
-.cart-footer {
-    background-color: #f2f2f2;
+    border: 2px solid #333; /* Ajout d'une bordure */
+    background-color: skyblue; /* Fond de couleur gris clair */
+    border-radius: 10px;
 }
 
 .cart-header,
@@ -123,7 +121,7 @@ nav ul li a:hover {
     flex: 1;
     display: flex; /* Ajout de la propriété display:flex */
     align-items: center; /* Pour centrer verticalement les éléments */
-    justify-content: space-between; /* Pour espacer les éléments sur l'axe horizontal */
+    justify-content: center; /* Pour espacer les éléments sur l'axe horizontal */
     text-align: center;
 }
 
@@ -132,15 +130,28 @@ nav ul li a:hover {
 }
 
 .cart-column button {
-    background-color: transparent;
-    border: none;
+    background-color: aquamarine;
+    border: 1px solid #ff0000; /* Ajout d'une bordure */
     color: red; /* Couleur de votre choix pour le bouton X */
     font-size: 18px; /* Taille de police de votre choix */
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .cart-item {
-    border-bottom: 1px solid #f2f2f2;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.product-image-cart {
+    margin-right: 20px;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-total {
@@ -150,7 +161,7 @@ nav ul li a:hover {
 .validate-btn {
     background-color: #4CAF50;
     color: white;
-    border: none;
+    border: 2px solid #45a049; /* Ajout d'une bordure */
     text-align: center;
     text-decoration: none;
     cursor: pointer;
