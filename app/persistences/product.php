@@ -1,8 +1,8 @@
 <?php
 //fonction qui retourne un produit de la BDD
-function getProduct($pdo, $product_id)
+function getProduct(PDO $pdo, $product_id)
 {
-    $statement = $pdo->query("SELECT products.title, products.description, products.ttc, products.stock
+    $statement = $pdo->query("SELECT products.id, products.title, products.description, products.ttc, products.stock
 FROM products
 WHERE products.id = $product_id
 ");
@@ -10,7 +10,7 @@ WHERE products.id = $product_id
 }
 
 //fonction qui retourne tous les produits de la BDD
-function getAllProducts($pdo)
+function getAllProducts(PDO $pdo): false|array
 {
     $statement = $pdo->query("SELECT products.id,products.title, products.description, products.ttc, products.stock
 FROM products");

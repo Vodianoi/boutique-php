@@ -15,25 +15,21 @@ function initCart(): void
 //faux panier
 function fakeCart(): void
 {
-
     $_SESSION['cart'] = [
         '1' => 5,
         '2' => 36,
         '3' => 7,
     ];
-
-
 }
 
-function totalCart(PDO $pdo)
+function totalCart(PDO $pdo, array $cart): array
 {
     $total = 0;
     $totalQuantity = 0;
-    foreach ($_SESSION['cart'] as $productID => $quantity) {
+    foreach ($cart as $productID => $quantity) {
         $product = getProduct($pdo, $productID);
         $total += $product['ttc'] * $quantity;
         $totalQuantity += $quantity;
-
     }
     //retourne un tableau avec le total et le total des quantités
     return [
@@ -57,5 +53,31 @@ function addProductCart($productID, $quantity): void
             $productID => $quantity
         ];
     }
+
+}
+
+/**
+ * @param PDO $pdo
+ * @return void
+ */
+function cartToProductList(PDO $pdo, array $cart): array
+{
+    $productQuantities = [];
+    foreach ($cart as $productID => $quantity) {
+        $product = getProduct($pdo, $productID);
+        $productQuantities[] = [
+            'id' => $productID,
+            'name' => $product['title'],
+            'priceTtc' => $product['ttc'],
+            'quantity' => $quantity,
+            'total' => $quantity * $product['ttc'],
+        ];
+
+    }
+    return $productQuantities;
+}
+
+function updateProductCart()
+{
 
 }
