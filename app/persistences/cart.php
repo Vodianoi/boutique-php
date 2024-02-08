@@ -92,22 +92,6 @@ function deleteProductCart($id): void
     }
 }
 
-function quantities_idToIDQuantities($quantities_id): array
-{
-    $res = [];
-    foreach ($quantities_id as $key => $quantity) {
-        if (str_contains($key, 'quantity_')) {
-            $productID = explode('_', $key)[1];
-            $res += [$productID => $quantity];
-        }
-    }
-    return $res;
-
-
-}
-
-
-
 
 
 

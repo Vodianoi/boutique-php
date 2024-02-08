@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
     if (isset($_POST['update'])) {
-        $idQuantities = quantities_idToIDQuantities($_POST);
+        $idQuantities = $_POST['quantity'];
         try {
             updateCartQuantities($idQuantities);
         } catch (Exception $e) {

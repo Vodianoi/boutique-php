@@ -22,7 +22,7 @@
                         <td><?= $product['title'] ?></td>
                         <td><?= $product['ttc'] ?>€</td>
                         <td>
-                            <input type="number" name="quantity_<?= $product['id'] ?>"
+                            <input type="number" name="quantity[<?= $product['id'] ?>]"
                                    value="<?= $quantity ?>" min="1" class="form-control" style="max-width: 100px">
                         </td>
                         <td><?= $product['ttc'] * $quantity ?>€</td>
