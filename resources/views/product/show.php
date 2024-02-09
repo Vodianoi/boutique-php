@@ -24,7 +24,13 @@
                                 <input type="hidden" name="id" value="<?= $product['id'] ?>">
                                 <button type="submit" class="btn btn-primary mr-2">Add to Cart</button>
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
-                                    <a href="?action=deleteProduct&id=<?= $product['id'] ?>" class="btn btn-danger mr-2">Delete</a>
+                                    <?php if ($product['available'] == 1): ?>
+                                        <a href="?action=deleteProduct&id=<?= $product['id'] ?>"
+                                           class="btn btn-danger mr-2">Disable</a>
+                                    <?php elseif ($product['available'] == 0): ?>
+                                        <a href="?action=enableProduct&id=<?= $product['id'] ?>"
+                                           class="btn btn-danger mr-2">Enable</a>
+                                    <?php endif; ?>
                                     <a href="?action=updateProduct&id=<?= $product['id'] ?>" class="btn btn-secondary">Update</a>
                                 <?php endif; ?>
                             </form>

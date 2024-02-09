@@ -1,5 +1,7 @@
 <?php
 
+use Random\RandomException;
+
 function totalCart(PDO $pdo, $productsQuantities): array
 {
     $total = 0;
@@ -20,8 +22,9 @@ function initCart($force = false): void
     }
 }
 
+
 /**
- * @throws \Random\RandomException
+ * @throws RandomException
  */
 function fakeCart(): void
 {

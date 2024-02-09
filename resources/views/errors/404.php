@@ -1,6 +1,8 @@
-<div class="container error-container">
-    <img class="error-image" src="https://placekitten.com/800/400" alt="404 Cat Image">
-    <h1 class="error-heading">404</h1>
-    <p class="error-message">Oops! The page you are looking for might be in another galaxy.</p>
-    <p><a class="error-link" href="/">Go back home</a></p>
+<body class="bg-light d-flex flex-column min-vh-100">
+<div class="container-fluid text-center py-5">
+    <img src="https://placekitten.com/150/150" alt="Error 404" class="img-fluid" style="max-width: 200px;">
+    <h1 class="display-4 mt-3">404 Not Found</h1>
+    <p class="lead">The page you are looking for might have been removed or is temporarily unavailable.</p>
+    <a href="/" class="btn btn-primary">Go Back to Homepage</a>
 </div>
+</body>

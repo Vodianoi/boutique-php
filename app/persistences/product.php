@@ -16,11 +16,20 @@ function getAllProducts(PDO $pdo): false|array
 
 function deleteProduct(PDO $pdo, $id): bool
 {
-    $sql = 'DELETE FROM products WHERE id= ?';
+//    $sql = 'DELETE FROM products WHERE id= ?';
+//    $stmt = $pdo->prepare($sql);
+//    return $stmt->execute([$id]);
+    $sql = 'UPDATE products SET available=0 WHERE id = ?';
     $stmt = $pdo->prepare($sql);
     return $stmt->execute([$id]);
 }
 
+function enableProduct(PDO $pdo, $id): bool
+{
+    $sql = 'UPDATE products SET available=1 WHERE id = ?';
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute([$id]);
+}
 function updateProduct(PDO $pdo, $product): bool
 {
     $category = getCategoryIDByName($pdo, $product['category']);
